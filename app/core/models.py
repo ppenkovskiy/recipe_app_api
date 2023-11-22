@@ -39,6 +39,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 
+    # objects is an instance of the UserManager class, providing methods for creating users.
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
