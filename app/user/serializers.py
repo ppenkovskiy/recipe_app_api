@@ -1,21 +1,25 @@
 """
 Serializers for the user API view.
 """
-# authenticate is a function that comes with Django that allows you to authenticate
+
+# Authenticate is a function that comes with Django that allows you to authenticate
 # with the authentication system.
 from django.contrib.auth import (
     get_user_model,
     authenticate,
 )
+
 from django.utils.translation import gettext as _
+
 # Serializers module includes different tools that we need for defining serialize.
 from rest_framework import serializers
 
 
-# Serialization is simply just a way to convert objects to and from Python objects.
+# This class is used to serialize and deserialize user objects.
 class UserSerializer(serializers.ModelSerializer):
     """Serializer for the user object."""
 
+    # This is an inner class within UserSerializer that provides metadata for the serializer.
     class Meta:
         model = get_user_model()
         # Specify the fields that we want to enable for the serializer
@@ -38,7 +42,7 @@ class AuthTokenSerializer(serializers.Serializer):
 
     def validate(self, attrs):
         """Validate and authenticate the user."""
-        email = atts.get('email')
+        email = attrs.get('email')
         password = attrs.get('password')
         user = authenticate(
             request=self.context.get('request'),
