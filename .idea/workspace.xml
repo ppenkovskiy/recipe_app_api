@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="23f73314-4d17-4e74-8856-675bf47c4c8f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/app/recipe/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/recipe/apps.py" beforeDir="false" />
-    </list>
+    <list default="true" id="23f73314-4d17-4e74-8856-675bf47c4c8f" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -81,7 +78,7 @@
       <workItem from="1701100072103" duration="4544000" />
       <workItem from="1701106697802" duration="2467000" />
       <workItem from="1701192485524" duration="604000" />
-      <workItem from="1701194072454" duration="2032000" />
+      <workItem from="1701194072454" duration="2348000" />
     </task>
     <servers />
   </component>
