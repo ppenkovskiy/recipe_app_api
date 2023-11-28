@@ -20,6 +20,7 @@ parts/
 sdist/
 var/
 wheels/
+pip-wheel-metadata/
 share/python-wheels/
 *.egg-info/
 .installed.cfg
@@ -71,7 +72,6 @@ instance/
 docs/_build/
 
 # PyBuilder
-
 target/
 
 # Jupyter Notebook
@@ -81,6 +81,7 @@ target/
 profile_default/
 ipython_config.py
 
+# pyenv
 .python-version
 
 # pipenv
@@ -91,7 +92,7 @@ ipython_config.py
 #Pipfile.lock
 
 
-# PEP 582; used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm
+# PEP 582; used by e.g. github.com/David-OConnor/pyflow
 __pypackages__/
 
 # Celery stuff
@@ -129,3 +130,4 @@ dmypy.json
 .pyre/
 
 .idea/
+
