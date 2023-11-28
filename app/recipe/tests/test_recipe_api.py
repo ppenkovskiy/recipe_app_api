@@ -49,7 +49,7 @@ class PublicRecipeAPITests(TestCase):
 class PrivateRecipeAPITests(TestCase):
     """Test authenticated API requests."""
 
-    # Сreate authenticated user.
+    # Create authenticated user.
     def setUp(self):
         self.client = APIClient()
         self.user = get_user_model().objects.create_user(
@@ -96,3 +96,21 @@ class PrivateRecipeAPITests(TestCase):
         serializer = RecipeDetailSerializer(recipe)
         self.assertEqual(res.data, serializer.data)
 
+    def test_create_recipe(self):
+        """Test creating a recipe."""
+        payload = {
+            'title': 'title',
+            'time_minutes': 30,
+            'price': Decimal('5.99'),
+        }
+        res = self.client.post(RECIPES_URL, payload)
+
+        self.assertEqual(res.status_code, status.HTTP_201_CREATED)
+        recipe = Recipe.objects.get(id=res.data['id'])
+
+        self.assertEqual(recipe.title, payload['title'])
+        self.assertEqual(recipe.time_minutes, payload['time_minutes'])
+        self.assertEqual(recipe.price, payload['price'])
+
+        self.assertEqual(recipe.user, self.user)
+        
