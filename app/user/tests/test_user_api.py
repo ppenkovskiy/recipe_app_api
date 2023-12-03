@@ -6,8 +6,10 @@ from django.test import TestCase
 # get_user_model - a method provided by Django that returns the user model that is currently active in the project.
 from django.contrib.auth import get_user_model
 from django.urls import reverse
+
 from rest_framework.test import APIClient
 from rest_framework import status
+
 
 # Constants representing URLs for user creation, token generation, and user profile retrieval.
 CREATE_USER_URL = reverse('user:create')
@@ -57,7 +59,7 @@ class PublicUserApiTests(TestCase):
             'name': 'Test Name',
         }
         create_user(**payload)
-        # Create user.
+
         res = self.client.post(CREATE_USER_URL, payload)
         # Checking to receive an error if a user with this email already exists.
         self.assertEqual(res.status_code, status.HTTP_400_BAD_REQUEST)
@@ -107,7 +109,7 @@ class PublicUserApiTests(TestCase):
 
     def test_create_token_blank_password(self):
         """Test posting a blank password returns an error."""
-        payload = {'email': 'test@test.com', 'password': ''}
+        payload = {'email': 'test@example.com', 'password': ''}
         res = self.client.post(TOKEN_URL, payload)
 
         self.assertNotIn('token', res.data)
@@ -116,6 +118,7 @@ class PublicUserApiTests(TestCase):
     def test_retrieve_user_unauthorized(self):
         """Test authentication is required for users."""
         res = self.client.get(ME_URL)
+
         self.assertEqual(res.status_code, status.HTTP_401_UNAUTHORIZED)
 
 
