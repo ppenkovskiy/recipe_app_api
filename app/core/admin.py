@@ -39,6 +39,6 @@ class UserAdmin(BaseUserAdmin):
     )
 
 
-# Register User model with UserAdmin class.
 admin.site.register(models.User, UserAdmin)
 admin.site.register(models.Recipe)
+admin.site.register(models.Tag)
