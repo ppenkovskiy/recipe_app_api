@@ -9,7 +9,6 @@ from rest_framework.test import APIClient
 from core.models import Ingredient
 from recipe.serializers import IngredientSerializer
 
-
 INGREDIENTS_URL = reverse('recipe:ingredient-list')
 
 
@@ -53,3 +52,16 @@ class PrivateIngredientsApiTest(TestCase):
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertEqual(res.data, serializer.data)
 
+    def test_ingredients_limited_to_user(self):
+        """Test list of ingredients is limited to authenticated user."""
+        # creating new unauthenticated user
+        user2 = create_user(email='user2@example.com')
+        Ingredient.objects.create(user=user2, name='Salt')
+        ingredient = Ingredient.objects.create(user=self.user, name='Pepper')
+
+        res = self.client.get(INGREDIENTS_URL)
+
+        self.assertEqual(res.status_code, status.HTTP_200_OK)
+        self.assertEqual(len(res.data), 1)
+        self.assertEqual(res.data[0]['name'], ingredient.name)
+        self.assertEqual(res.data[0]['id'], ingredient.id)
