@@ -13,6 +13,7 @@ from rest_framework.permissions import IsAuthenticated
 from core.models import (
     Recipe,
     Tag,
+    Ingredient,
 )
 # Importing serializer class (RecipeSerializer) from the recipe app,
 # which is used to serialize/deserialize Recipe objects.
@@ -57,3 +58,15 @@ class TagViewSet(mixins.DestroyModelMixin,
         """Filter queryset to authenticated user."""
         return self.queryset.filter(user=self.request.user).order_by('-name')
 
+
+class IngredientViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
+    """Manage ingredients in the database."""
+    serializer_class = serializers.IngredientSerializer
+    queryset = Ingredient.objects.all()
+    authentication_classes = [TokenAuthentication]
+    # All users must be authenticated to use this endpoint.
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        """Filter queryset to authenticated user."""
+        return self.queryset.filter(user=self.request.user).order_by('-name')
