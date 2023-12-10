@@ -303,7 +303,7 @@ class PrivateRecipeAPITests(TestCase):
             'title': 'Recipe',
             'time_minutes': 60,
             'price': '4.22',
-            'ingredients': [{'name': 'Salt'}, {'name': 'Sugar'}],
+            'ingredients': [{'name': 'Lemon'}, {'name': 'Sugar'}],
         }
         res = self.client.post(RECIPES_URL, payload, format='json')
 
