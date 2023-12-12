@@ -1,4 +1,6 @@
-"""Test for recipe APIs."""
+"""
+Test for recipe APIs.
+"""
 
 from decimal import Decimal
 import tempfile
