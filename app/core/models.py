@@ -44,8 +44,10 @@ class UserManager(BaseUserManager):
         return user
 
 
-# AbstractBaseUser provides the core implementation of a user model with email and password.
-# PermissionsMixin adds the fields and methods necessary for handling permissions.
+# AbstractBaseUser provides the core implementation
+# of a user model with email and password.
+# PermissionsMixin adds the fields and methods
+# necessary for handling permissions.
 class User(AbstractBaseUser, PermissionsMixin):
     """User in the system."""
     email = models.EmailField(max_length=255, unique=True)
@@ -53,7 +55,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 
-    # Objects is an instance of the UserManager class, providing methods for creating users.
+    # Objects is an instance of the UserManager class,
+    # providing methods for creating users.
     objects = UserManager()
 
     USERNAME_FIELD = 'email'

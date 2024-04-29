@@ -3,7 +3,8 @@ Tests for the user API.
 """
 # TestCase is Django's base test class for creating test cases.
 from django.test import TestCase
-# get_user_model - a method provided by Django that returns the user model that is currently active in the project.
+# get_user_model - a method provided by Django that
+# returns the user model that is currently active in the project.
 from django.contrib.auth import get_user_model
 from django.urls import reverse
 
@@ -11,11 +12,14 @@ from rest_framework.test import APIClient
 from rest_framework import status
 
 
-# Constants representing URLs for user creation, token generation, and user profile retrieval.
+# Constants representing URLs for user creation,
+# token generation, and user profile retrieval.
 CREATE_USER_URL = reverse('user:create')
 TOKEN_URL = reverse('user:token')
-# ME_URL is a constant that represents the URL for retrieving the profile of the currently authenticated user.
-# It is typically used in API tests to make requests to the user profile endpoint.
+# ME_URL is a constant that represents the URL
+# for retrieving the profile of the currently authenticated user.
+# It is typically used in API tests to make
+# requests to the user profile endpoint.
 ME_URL = reverse('user:me')
 
 
@@ -35,7 +39,8 @@ class PublicUserApiTests(TestCase):
     def setUp(self):
         self.client = APIClient()
 
-    # Test creating a valid data, checking the response status code, verifying the user's password,
+    # Test creating a valid data, checking the response
+    # status code, verifying the user's password,
     # and ensuring the password is not included in the response.
     def test_create_user_success(self):
         """Test creating a user is successful."""
@@ -61,7 +66,8 @@ class PublicUserApiTests(TestCase):
         create_user(**payload)
 
         res = self.client.post(CREATE_USER_URL, payload)
-        # Checking to receive an error if a user with this email already exists.
+        # Checking to receive an error if a user with
+        # this email already exists.
         self.assertEqual(res.status_code, status.HTTP_400_BAD_REQUEST)
 
     def test_password_too_short_error(self):

@@ -2,7 +2,8 @@
 Serializers for the user API view.
 """
 
-# Authenticate is a function that comes with Django that allows you to authenticate
+# Authenticate is a function that comes
+# with Django that allows you to authenticate
 # with the authentication system.
 from django.contrib.auth import (
     get_user_model,
@@ -11,7 +12,8 @@ from django.contrib.auth import (
 
 from django.utils.translation import gettext as _
 
-# Serializers module includes different tools that we need for defining serialize.
+# Serializers module includes different
+# tools that we need for defining serialize.
 from rest_framework import serializers
 
 
